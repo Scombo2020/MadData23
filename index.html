@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+            <link rel="stylesheet" href="style.css">
+            <meta charset="UTF-8">
+
+            <title>Search Your Course</title>
+
+            <script> 
+                function filterDropdown() {
+                    // Get the input field and dropdown menu
+                    var input = document.getElementById("myInput");
+                    var dropdown = document.getElementById("myDropdown");
+                  
+                    // Get the user's input and convert to lowercase
+                    var filter = input.value.toLowerCase();
+                  
+                    // Get all the options in the dropdown
+                    var options = dropdown.getElementsByTagName("option");
+                  
+                    // Loop through the options and hide/show based on user's input
+                    for (var i = 0; i < options.length; i++) {
+                      var option = options[i];
+                      if (option.value.toLowerCase().indexOf(filter) > -1) {
+                        option.style.display = "";
+                      } else {
+                        option.style.display = "none";
+                      }
+                    }
+                  }
+                function printSelected() {
+                    var selectedItem = document.getElementById("myDropdown").value;
+                    alert("You selected: " + selectedItem);
+                }
+              
+                
+                let output = ""
+                output = output + String(userinfo) + "<br>"
+                document.getElementById("selected").innerHTML = output;
+
+                
+                
+                function sendUserinfo(){
+                    let userinfo=document.getElementById('myDropdown').value
+                    output = output + String(userinfo) + "<br>"
+                    document.getElementById("selected").innerHTML = output;
+                    //const request = new XMLHttpRequest()
+                    //request.open('POST',`/ProcessUserinfo/?food=${encodeURIComponent(JSON.stringify(output))}`)
+                    //request.send();        
+                }
+                function sendResults(){
+                    if (output == ""){
+                      alert("Please Select At Least 1 course");
+                      return;
+                    }
+                    const request = new XMLHttpRequest()
+                    request.open('POST',`/ProcessUserinfo/?food=${encodeURIComponent(JSON.stringify(output))}`)
+                    request.send();        
+                }
+                function deleteCourse(){
+                  output = ""
+                  document.getElementById("selected").innerHTML = output;
+                }
+                
+            </script>
+
+
+    </head>
+
+
+    <body>
+        <h1> Search Courses</h1>
+
+        <img alt="UW-Madison CS Department" src="UW-CS.png" style="width:250px;height:100px;">
+
+        <p> search for your interested CS courses and check out the minimum required courses you need to take before them</p>
+
+        <form>
+
+        <label for="courses">Choose a course:</label>
+        <input type="text" id="myInput" onkeyup="filterDropdown()" placeholder="Search for courses...">
+        <select id="myDropdown" onchange="filterDropdown()">
+          <option value="COMPSCI200">COMP SCI 200</option>
+          <option value="COMPSCI202">COMP SCI 202</option>
+          <option value="COMPSCI220">COMP SCI 220</option>
+          <option value="COMPSCI/​MATH240">COMP SCI/MATH 240</option>
+          <option value="COMPSCI/​ECE252">COMP SCI/E C E 252</option>
+          <option value="COMPSCI270">COMP SCI 270</option>
+          <option value="COMPSCI298">COMP SCI 298</option>
+          <option value="COMPSCI300">COMP SCI 300</option>
+          <option value="COMPSCI304">COMP SCI 304</option>
+          <option value="COMPSCI310">COMP SCI 310</option>
+          <option value="COMPSCI319">COMP SCI 319</option>
+          <option value="COMPSCI320">COMP SCI 320</option>
+          <option value="COMPSCI/​ECE352">COMP SCI/E C E 352</option>
+          <option value="COMPSCI/​ECE354">COMP SCI/E C E 354</option>
+          <option value="COMPSCI368">COMP SCI 368</option>
+          <option value="COMPSCI369">COMP SCI 369</option>
+          <option value="COMPSCI400">COMP SCI 400</option>
+          <option value="COMPSCI402">COMP SCI 402</option>
+          <option value="COMPSCI/​STAT403">COMP SCI/STAT 403</option>
+          <option value="COMPSCI407">COMP SCI 407</option>
+          <option value="COMPSCI412">COMP SCI 412</option>
+          <option value="COMPSCI/​ISYE/​MATH425">COMP SCI/​I SY E/​MATH 425</option>
+          <option value="COMPSCI/​ECE/​MATH435">COMP SCI/​E C E/​MATH 435</option>
+          <option value="COMPSCI/​STAT471">COMP SCI/​STAT 471</option>
+          <option value="COMPSCI/​MATH/​STAT475">COMP SCI/​MATH/​STAT 475</option>
+          <option value="COMPSCI/​CURRIC502">COMP SCI/​CURRIC 502</option>
+          <option value="COMPSCI/​ECE506">COMP SCI/​E C E 506</option>
+          <option value="COMPSCI/​MATH513">COMP SCI/​MATH 513</option>
+          <option value="COMPSCI/​MATH514">COMP SCI/​MATH 514</option>
+          <option value="COMPSCI/​DS/​ISYE518">COMP SCI/​DS/​I SY E 518</option>
+          <option value="COMPSCI520">COMP SCI 520</option>
+          <option value="COMPSCI/​ECE/​ISYE524">COMP SCI/​E C E/​I SY E 524</option>
+          <option value="COMPSCI/​ISYE/​MATH/​STAT525">COMP SCI/​I SY E/​MATH/​STAT 525</option>
+          <option value="COMPSCI/​ISYE526">COMP SCI/​I SY E 526</option>
+          <option value="COMPSCI/​ECE/​ME532">COMPS CI/​E C E/​M E532</option>
+          <option value="COMPSCI/​ECE533">COMP SCI/​E C E 533</option>
+          <option value="COMPSCI534">COMP SCI 534</option>
+          <option value="COMPSCI536">COMP SCI 536</option>
+          <option value="COMPSCI537">COMP SCI 537</option>
+          <option value="COMPSCI538">COMP SCI 538</option>
+          <option value="COMPSCI/ECE/ME539">COMP SCI/E C E/M E 539</option>
+          <option value="COMPSCI540">COMP SCI 540</option>
+          <option value="COMPSCI542">COMP SCI 542</option>
+          <option value="COMPSCI545">COMP SCI 545</option>
+          <option value="COMPSCI/ECE552">COMP SCI/E C E 552</option>
+          <option value="COMPSCI/ISYE/ME558">COMP SCI/I SY E/M E 558</option>
+          <option value="COMPSCI559">COMP SCI 559</option>
+          <option value="COMPSCI/ECE561">COMP SCI/E C E 561</option>
+          <option value="COMPSCI564">COMP SCI 564</option>
+          <option value="COMPSCI/BMI567">COMP SCI /B M I 567</option>
+          <option value="COMPSCI570">COMP SCI 570</option>
+          <option value="COMPSCI571">COMP SCI 571</option>
+          <option value="COMPSCI/BMI576">COMP SCI/B M I 576</option>
+          <option value="COMPSCI577">COMP SCI 577</option>
+          <option value="COMPSCI578">COMP SCI 578</option>
+          <option value="COMPSCI/DS579">COMP SCI/DS 579</option>
+          <option value="COMPSCI/LIS611">COMP SCI/L I S 611</option>
+          <option value="COMPSCI/LIS612">COMP SCI/L I S 612</option>
+          <option value="COMPSCI/LIS613">COMP SCI/L I S 613</option>
+          <option value="COMPSCI/LIS614">COMP SCI/L I S 614</option>
+          <option value="COMPSCI/ISYE635">COMP SCI/I SY E 635</option>
+          <option value="COMPSCI638">COMP SCI 638</option>
+          <option value="COMPSCI639">COMP SCI 639</option>
+          <option value="COMPSCI640">COMP SCI 640</option>
+          <option value="COMPSCI642">COMP SCI 642</option>
+          <option value="COMPSCI681">COMP SCI 681</option>
+          <option value="COMPSCI682">COMP SCI 682</option>
+          <option value="COMPSCI691">COMP SCI 691</option>
+          <option value="COMPSCI692">COMP SCI 692</option>
+          <option value="COMPSCI698">COMP SCI 698</option>
+          <option value="COMPSCI699">COMP SCI 699</option>
+          <option value="COMPSCI701">COMP SCI 701</option>
+          <option value="COMPSCI702">COMP SCI 702</option>
+          <option value="COMPSCI703">COMP SCI 703</option>
+          <option value="COMPSCI704">COMP SCI 704</option>
+          <option value="COMPSCI706">COMP SCI 706</option>
+          <option value="COMPSCI/ECE707">COMPSCI/ECE707</option>
+          <option value="COMPSCI710">COMP SCI 710</option>
+          <option value="COMPSCI/​MATH714">COMP SCI/​MATH 714</option>
+          <option value="COMPSCI/​MATH715">COMP SCI/​MATH 715</option>
+          <option value="COMPSCI/​ISYE719">COMP SCI/​I SY E 719</option>
+          <option value="COMPSCI/​ISYE723">COMP SCI/​I SY E 723</option>
+          <option value="COMPSCI/​ISYE/​MATH/​STAT726">COMP SCI/​I SY E/​MATH/​STAT 726</option>
+          <option value="COMPSCI/​ISYE727">COMP SCI/​I SY E 727</option>
+          <option value="COMPSCI/​ISYE/​MATH728">COMP SCI/​I SY E/​MATH 728</option>
+          <option value="COMPSCI/​ISYE/​MATH730">COMP SCI/​I SY E/​MATH 730</option>
+          <option value="COMPSCI736">COMP SCI 736</option>
+          <option value="COMPSCI739">COMP SCI 739</option>
+          <option value="COMPSCI740">COMP SCI 740</option>
+          <option value="COMPSCI744">COMP SCI 744</option>
+          <option value="COMPSCI/​ECE750">COMP SCI/​E C E 750</option>
+          <option value="COMPSCI/​ECE752">COMP SCI/​E C E 752</option>
+          <option value="COMPSCI/​ECE755">COMP SCI/​E C E 755</option>
+          <option value="COMPSCI/​ECE756">COMP SCI/​E C E 756</option>
+          <option value="COMPSCI/​ECE757">COMP SCI/​E C E 757</option>
+          <option value="COMPSCI758">COMP SCI 758</option>
+          <option value="COMPSCI/​ECE/​EMA/​EP/​ME759">COMP SCI/​E C E/​EMA/​EP/​ME759</option>
+          <option value="COMPSCI/​ECE760">COMPSCI/​ECE760</option>
+          <option value="COMPSCI/​ECE761">COMPSCI/​ECE761</option>
+          <option value="COMPSCI762">COMPSCI762</option>
+          <option value="COMPSCI763">COMPSCI763</option>
+          <option value="COMPSCI764">COMPSCI764</option>
+          <option value="COMPSCI765">COMPSCI765</option>
+          <option value="COMPSCI766">COMPSCI766</option>
+          <option value="COMPSCI/​BMI767">COMPSCI/​BMI767</option>
+          <option value="COMPSCI769">COMPSCI769</option>
+          <option value="COMPSCI/​EDPSYCH/​PSYCH770">COMPSCI/​EDPSYCH/​PSYCH770</option>
+          <option value="COMPSCI/​BMI771">COMPSCI/​BMI771</option>
+          <option value="COMPSCI/​BMI775">COMPSCI/​BMI775</option>
+          <option value="COMPSCI/​BMI776">COMPSCI/​BMI776</option>
+          <option value="COMPSCI/​ECE782">COMPSCI/​ECE782</option>
+          <option value="COMPSCI784">COMPSCI784</option>
+          <option value="COMPSCI787">COMPSCI787</option>
+          <option value="COMPSCI790">COMPSCI790</option>
+          <option value="COMPSCI799">COMPSCI799</option>
+          <option value="COMPSCI809">COMPSCI809</option>
+          <option value="COMPSCI812">COMPSCI812</option>
+          <option value="COMPSCI839">COMPSCI839</option>
+          <option value="COMPSCI/BMI/PSYCH841">COMPSCI/BMI/PSYCH841</option>
+          <option value="COMPSCI/ECE/STAT861">COMPSCI/ECE/STAT861</option>
+          <option value="COMPSCI880">COMPSCI880</option>
+          <option value="COMPSCI899">COMPSCI899</option>
+          <option value="COMPSCI900">COMPSCI900</option>
+          <option value="COMPSCI/BME/BMI/BIOCHEM/CBE/GENETICS915">COMPSCI/BME/BMI/BIOCHEM/CBE/GENETICS915</option>
+          <option value="COMPSCI990">COMPSCI990</option>
+          <option value="COMPSCI999">COMPSCI999</option>
+        </select>
+        <button onclick="sendUserinfo()" type="button">Add Course</button>
+        <button onclick="deleteCourse()" type="button">Delete All Course</button>
+        <h2>Selected Course: </h2>
+        <p id="selected"> </p>
+        <button onclick="sendResults()"type="button">Submit</button>
+        </form>
+
+
+        
+
+        
+
+    </body>
+
+
+</html>
